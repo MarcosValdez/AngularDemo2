@@ -1,9 +1,85 @@
-<p>venta-libro works!---sakgjbkdfgbf</p>
+<body>
+
+    <div class="main">
+        
+    
+        <div class="container">
+            <form id="booking-form" class="booking-form" method="POST">
+                <div class="form-group">
+                    <div class="form-destination">
+                        <label for="autor">Autor</label>
+                        <input type="text" id="autor" name="autor" placeholder="Edgar allan poe" />
+                    </div>
+                    <div class="form-date-from form-icon">
+                        <label for="Categoría">Categoría</label>
+                        <input type="text" id="Categoría"  placeholder="Poemas" />
+                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+                    </div>
+                    <div class="form-date-to form-icon">
+                        <label for="Título">Título</label>
+                        <input type="text" id="Título"placeholder="Annabel Lee" />
+                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+                    </div>
+
+                    <div class="form-submit">
+                        <input type="submit" id="submit" class="submit" value="Buscar" />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        
+       
+            <table class="table table-bordered table-hover mx-auto" style="width: 1000px">
+                    <thead class="thead-dark">
+                    <tr>
+                    <th >N</th>
+                    <th >TÍTULO</th>
+                    <th >AUTOR</th>
+                    <th >PRECIO</th>
+                    <th >VENTA</th>
+                    </tr>
+                   </thead>
+
+                      <tbody>
+                
+                        <tr>
+                           <td >01</td>
+                           <td >Los crímenes de la calle Morgue</td>
+                           <td >Edgar allan poe</td>
+                           <td >$80.00</td>
+                           <td class="total"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                        </tr>
+                        <tr>
+                        <td >02</td>
+                        <td >El Cuervo</td>
+                        <td >Edgar allan poe</td>
+                        <td >$40.00</td>
+                        <td ><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                     </tr>
+                       <tr>
+                       <td >03</td>
+                       <td >El gato negro</td>
+                       <td >Edgar allan poe</td>
+                       <td >$70.00</td>
+                       <td class="total"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
+                     </tr>
+                    </tbody>
+            </table>
+       
+
+
+    </div>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Vender
+      </button> 
+</body>
+
+
 <!-- Button trigger modal -->
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Vender
-</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
