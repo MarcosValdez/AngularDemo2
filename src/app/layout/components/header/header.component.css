@@ -1,0 +1,44 @@
+.navbar-header {
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem;
+    background-color: #000000;
+}
+
+.navbar-header-text {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 1.25rem;
+    box-sizing: border-box;
+    color: #ffffff;
+    padding: .3125rem;
+    text-decoration: none;
+}
+
+.navbar-header-buttons {
+    padding: .3125rem;
+    text-decoration: none;
+}
+
+.navbar-header-button {
+    align-items: center;
+    font-size: 1rem;
+    background-color: #ffffff;
+    border-radius: 20px;
+    border-color: transparent;
+    padding: 5px 20px;
+    margin: 2px;
+}
+
+.navbar-header-button:hover {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.navbar-header-button:active {
+    background-color: #03548a;
+    position: relative;
+}
