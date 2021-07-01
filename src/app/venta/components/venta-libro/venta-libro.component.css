@@ -1,0 +1,22 @@
+input[type=number1]::-webkit-inner-spin-button,
+input[type=number1]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input {
+    border-radius: 10px;
+    border-color: rgba(0, 0, 0, 0.432);
+    padding-left: 10px;
+}
+
+.modal-title {
+    margin-top: 10px;
+    margin-left: 2px;
+}
+
+.modal-body {
+    flex-direction: row;
+    display: flex;
+    justify-content: space-around;
+}
