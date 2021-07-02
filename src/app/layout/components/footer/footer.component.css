@@ -1,23 +1,24 @@
-html, body{
-    height: 100%;
-    font-family: lato;
-   }
+html,
+body {
+  height: 100%;
+  font-family: lato;
+}
 
-   .page-footer2 {
-     background-color: #000000;
-     width: 100%;
-     height: auto; 
-   }
-   .footer-container {
-    text-align:center;
-    line-height: 50px;
-    color:#ffffff;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    letter-spacing: 2px;
-    word-spacing: 2px;
-    font-weight: 700;
-    text-decoration: none;
-    font-style: italic;
-    font-variant: small-caps;
-    text-transform: none;
-   }
+.page-footer2 {
+  background-color: #000000;
+  width: 100%;
+  height: auto;
+}
+.footer-container {
+  text-align: center;
+  line-height: 50px;
+  color: #ffffff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  letter-spacing: 2px;
+  word-spacing: 2px;
+  font-weight: 700;
+  text-decoration: none;
+  font-style: italic;
+  font-variant: small-caps;
+  text-transform: none;
+}

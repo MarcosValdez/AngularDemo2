@@ -4,18 +4,19 @@ import { GenerarReporteComponent } from './reporte/components/generar-reporte/ge
 import { VentaLibroComponent } from './venta/components/venta-libro/venta-libro.component';
 
 const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'venta' },
   {
-  path: 'venta',
-  component: VentaLibroComponent
+    path: 'venta',
+    component: VentaLibroComponent,
   },
   {
     path: 'reporte',
-    component: GenerarReporteComponent
-  }
+    component: GenerarReporteComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

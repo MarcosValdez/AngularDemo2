@@ -1,120 +1,158 @@
 <body>
-    <div class=" button-vender">
-        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Vender
-          </button> 
-    </div>
-    
+  <div class="button-vender">
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Vender
+    </button>
+  </div>
 
-    <div class="main">
-        <div class="container">
-            <form id="booking-form" class="booking-form" method="POST">
-                <div class="form-group">
-                    <div class="form-destination">
-                        <label for="autor">Autor</label>
-                        <input type="text" id="autor" name="autor" placeholder="Edgar allan poe" />
-                    </div>
-                    <div class="form-date-from form-icon">
-                        <label for="Categoría">Categoría</label>
-                        <input type="text" id="Categoría"  placeholder="Poemas" />
-                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
-                    </div>
-                    <div class="form-date-to form-icon">
-                        <label for="Título">Título</label>
-                        <input type="text" id="Título"placeholder="Annabel Lee" />
-                        <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
-                    </div>
+  <div class="main">
+    <div class="container">
+      <form id="booking-form" class="booking-form" method="POST">
+        <div class="form-group">
+          <div class="form-destination">
+            <label for="autor">Autor</label>
+            <input
+              type="text"
+              id="autor"
+              name="autor"
+              placeholder="Edgar allan poe"
+            />
+          </div>
+          <div class="form-date-from form-icon">
+            <label for="Categoría">Categoría</label>
+            <input type="text" id="Categoría" placeholder="Poemas" />
+            <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+          </div>
+          <div class="form-date-to form-icon">
+            <label for="Título">Título</label>
+            <input type="text" id="Título" placeholder="Annabel Lee" />
+            <!-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span> -->
+          </div>
 
-                    <div class="form-submit">
-                        <input type="submit" id="submit" class="submit" value="Buscar" />
-                    </div>
-                </div>
-            </form>
+          <div class="form-submit">
+            <input type="submit" id="submit" class="submit" value="Buscar" />
+          </div>
         </div>
-            <table class="table table-bordered table-hover mx-auto" style="width: 1000px">
-                    <thead class="thead-dark">
-                    <tr>
-                    <th >N</th>
-                    <th >TÍTULO</th>
-                    <th >AUTOR</th>
-                    <th >PRECIO</th>
-                    <th >VENTA</th>
-                    </tr>
-                   </thead>
-
-                      <tbody>
-                
-                        <tr>
-                           <td >01</td>
-                           <td >Los crímenes de la calle Morgue</td>
-                           <td >Edgar allan poe</td>
-                           <td >$80.00</td>
-                           <td class="total"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                        </tr>
-                        <tr>
-                        <td >02</td>
-                        <td >El Cuervo</td>
-                        <td >Edgar allan poe</td>
-                        <td >$40.00</td>
-                        <td ><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                     </tr>
-                       <tr>
-                       <td >03</td>
-                       <td >El gato negro</td>
-                       <td >Edgar allan poe</td>
-                       <td >$70.00</td>
-                       <td class="total"><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"></td>
-                     </tr>
-                    </tbody>
-            </table>
-       
-
-
+      </form>
     </div>
+    <table
+      class="table table-bordered table-hover mx-auto"
+      style="width: 1000px"
+    >
+      <thead class="thead-dark">
+        <tr>
+          <th>N</th>
+          <th>TÍTULO</th>
+          <th>AUTOR</th>
+          <th>PRECIO</th>
+          <th>VENTA</th>
+        </tr>
+      </thead>
 
+      <tbody>
+        <tr>
+          <td>01</td>
+          <td>Los crímenes de la calle Morgue</td>
+          <td>Edgar allan poe</td>
+          <td>$80.00</td>
+          <td class="total">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>02</td>
+          <td>El Cuervo</td>
+          <td>Edgar allan poe</td>
+          <td>$40.00</td>
+          <td>
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>03</td>
+          <td>El gato negro</td>
+          <td>Edgar allan poe</td>
+          <td>$70.00</td>
+          <td class="total">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckDefault"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </body>
-
 
 <!-- Button trigger modal -->
 
-
-
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Vender Libro</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <h1 style="font-size: 1rem;">DATOS DEL LIBRO</h1>
-                    <p class="modal-title">Nombre</p>
-                    <input type="text" placeholder="Aqui ira el nombre" disabled>
-                    <p class="modal-title">Autor</p>
-                    <input type=" text" placeholder="Aqui ira el Autor" disabled>
-                    <p class="modal-title">Categoria</p>
-                    <input type="text" placeholder="Aqui ira la Categoria" disabled>
-                    <p class="modal-title">Editorial</p>
-                    <input type=" text" placeholder="Aqui ira la Editorial" disabled>
-                    <p class="modal-title"># de Libros</p>
-                    <input type="number" maxlength="3" min="0">
-                </div>
-                <div style="vertical-align: top;">
-                    <h1 style="font-size: 1rem;">DATOS DEL COMPRADOR</h1>
-                    <p class="modal-title">Nombre</p>
-                    <input type="text">
-                    <p class="modal-title">Apellido</p>
-                    <input type=" text">
-                    <p class="modal-title">DNI</p>
-                    <input type="number1" maxlength="8">
-                </div>
-            </div>
-            <div class="modal-footer ">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success">Vender</button>
-            </div>
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Vender Libro</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <h1 style="font-size: 1rem">DATOS DEL LIBRO</h1>
+          <p class="modal-title">Nombre</p>
+          <input type="text" placeholder="Aqui ira el nombre" disabled />
+          <p class="modal-title">Autor</p>
+          <input type=" text" placeholder="Aqui ira el Autor" disabled />
+          <p class="modal-title">Categoria</p>
+          <input type="text" placeholder="Aqui ira la Categoria" disabled />
+          <p class="modal-title">Editorial</p>
+          <input type=" text" placeholder="Aqui ira la Editorial" disabled />
+          <p class="modal-title"># de Libros</p>
+          <input type="number" maxlength="3" min="0" />
         </div>
+        <div style="vertical-align: top">
+          <h1 style="font-size: 1rem">DATOS DEL COMPRADOR</h1>
+          <p class="modal-title">Nombre</p>
+          <input type="text" />
+          <p class="modal-title">Apellido</p>
+          <input type=" text" />
+          <p class="modal-title">DNI</p>
+          <input type="number1" maxlength="8" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-success">Vender</button>
+      </div>
     </div>
+  </div>
 </div>
