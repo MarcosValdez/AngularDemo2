@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AppServiceBase } from 'src/app/core/appService';
 import { Parametros } from 'src/app/reporte/models/parametros';
+import { Libro } from '../model/libro';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,14 @@ export class LibroService extends AppServiceBase {
     return this.post('libro/listar', parametrosDTO).pipe(
       catchError(this.handleError)
     );
+  }
+
+  save(libro: Libro) {
+    return this.post('libro/save', libro).pipe(catchError(this.handleError));
+  }
+
+  vender(id: number) {
+    return this.get(`libro/vender/${id}`).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -4,9 +4,9 @@ import { Editorial } from './editorial';
 
 export class Libro {
   libroId: number;
-  autorId: Autor;
-  categoriaId: Categoria;
-  editorialId: Editorial;
+  autor: Autor;
+  categoria: Categoria;
+  editorial: Editorial;
   nombre: string;
   descripcion: string;
   paginas: any;

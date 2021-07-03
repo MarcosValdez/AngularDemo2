@@ -92,7 +92,7 @@
     <table class="table table-bordered table-hover mx-auto">
       <thead class="thead-dark">
         <tr>
-          <th>N</th>
+          <th>N°</th>
           <th>TÍTULO</th>
           <th>AUTOR</th>
           <th>CATEGORIA</th>
@@ -111,7 +111,12 @@
           <td>{{ l?.precio }}</td>
           <td>{{ l?.cantidad }}</td>
           <td class="total">
-            <button class="btn btn-success" type="button" id="flexCheckDefault">
+            <button
+              class="btn btn-success"
+              type="button"
+              id="flexCheckDefault"
+              (click)="vender(l?.libroId)"
+            >
               Vender
             </button>
           </td>
@@ -141,6 +146,7 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          id="cerrar"
         ></button>
       </div>
       <div class="modal-body">
@@ -156,6 +162,26 @@
                 formControlName="nombreGuardar"
               />
             </div>
+            <div class="col-12">
+              <label for="">Descripcion</label>
+              <textarea
+                name=""
+                id=""
+                rows="3"
+                class="form-control"
+                formControlName="descripcion"
+              ></textarea>
+            </div>
+            <!-- <div class="col-12">
+              <label for="">Fecha</label>
+              <input
+                type="date"
+                class="form-control"
+                name=""
+                id=""
+                formControlName="fecha"
+              />
+            </div> -->
             <div class="col-12">
               <label for="">Autor</label>
               <input
@@ -179,6 +205,26 @@
                   {{ d.nombre }}
                 </option>
               </select>
+            </div>
+            <div class="col-12">
+              <label for="">N° páginas</label>
+              <input
+                type="number"
+                class="form-control"
+                name=""
+                id=""
+                formControlName="paginas"
+              />
+            </div>
+            <div class="col-12">
+              <label for="">Editorial</label>
+              <input
+                type="text"
+                class="form-control"
+                name=""
+                id=""
+                formControlName="editorial"
+              />
             </div>
             <div class="col-12">
               <label for="">Precio</label>
