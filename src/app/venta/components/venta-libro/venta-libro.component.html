@@ -72,7 +72,9 @@
         </form> -->
         <div class="row">
           <div class="col-10">
-            <input type="text" class="form-control" />
+            <input type="text" [(ngModel)]="filterlibro"
+              placeholder="Ingrese nombre de libro"
+              class="form-control" />
           </div>
           <div class="col-2">
             <button
@@ -103,7 +105,7 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let l of libros">
+        <tr *ngFor="let l of libros | filter: { nombre: filterlibro}">
           <td>{{ l?.libroId }}</td>
           <td>{{ l?.nombre }}</td>
           <td>{{ l?.autor?.nombre }}</td>

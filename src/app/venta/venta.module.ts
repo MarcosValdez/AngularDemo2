@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { VentaRoutingModule } from './venta-routing.module';
 import { VentaLibroComponent } from './components/venta-libro/venta-libro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
-  declarations: [VentaLibroComponent],
+  declarations: [VentaLibroComponent, FilterPipe],
   imports: [CommonModule, ReactiveFormsModule, FormsModule, VentaRoutingModule],
 })
 export class VentaModule {}

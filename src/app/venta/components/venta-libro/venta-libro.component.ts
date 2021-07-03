@@ -15,6 +15,7 @@ import { VentaService } from '../../service/venta.service';
   styleUrls: ['./venta-libro.component.css'],
 })
 export class VentaLibroComponent implements OnInit {
+  filterlibro:string ="";
   libros: Libro[];
   libroForm: FormGroup;
   libroFormGuardar: FormGroup;
@@ -49,6 +50,8 @@ export class VentaLibroComponent implements OnInit {
   listarLibros() {
     this.libroService.listarLibros().subscribe((x) => {
       this.libros = x;
+      console.log(x);
+      
     });
   }
 
