@@ -4,10 +4,12 @@ import { GenerarReporteComponent } from './reporte/components/generar-reporte/ge
 import { VentaLibroComponent } from './venta/components/venta-libro/venta-libro.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'venta' },
+
+  
   {
     path: 'venta',
-    component: VentaLibroComponent,
+    loadChildren: () =>
+      import('./venta/venta.module').then((m) => m.VentaModule),
   },
   {
     path: 'reporte',

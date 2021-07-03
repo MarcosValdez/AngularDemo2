@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VentaService } from '../../service/venta.service';
 
 @Component({
   selector: 'app-venta-libro',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VentaLibroComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private libroService: VentaService
+  ) { }
 
   ngOnInit(): void {
+    this.listarLibros();
+  }
+
+  listarLibros(){
+    return this.libroService.listarLibros().subscribe(
+    x=> {
+      console.log(x);
+    }
+    );
   }
 
 }
