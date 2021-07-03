@@ -15,6 +15,7 @@ import { VentaService } from '../../service/venta.service';
 export class VentaLibroComponent implements OnInit {
   libros: Libro[];
   libroForm: FormGroup;
+  libroFormGuardar: FormGroup;
   categorias: Categoria;
   constructor(
     private libroService: LibroService,
@@ -29,6 +30,13 @@ export class VentaLibroComponent implements OnInit {
       autor: [''],
       categoria: [''],
       titulo: [''],
+    });
+    this.libroFormGuardar = this.formBuilder.group({
+      autorGuardar: [''],
+      categoriaGuardar: [''],
+      nombreGuardar: [''],
+      precio: [''],
+      cantidad: [''],
     });
   }
 
@@ -47,11 +55,17 @@ export class VentaLibroComponent implements OnInit {
   buscar() {
     const parametro = new Parametros();
     parametro.autor = this.libroForm.get('autor')?.value;
-    parametro.categoria = this.libroForm.get('categoria')?.value;
+    parametro.categoria = this.libroForm.get('categoria')?.value?.categoriaId;
     parametro.nombre = this.libroForm.get('titulo')?.value;
     console.log(parametro);
-    this.libroService
-      .listarFiltro(parametro)
-      .subscribe((x) => (this.libros = x));
+    this.libroService.listarFiltro(parametro).subscribe((x) => {
+      this.libros = x;
+      console.log(x);
+    });
+  }
+
+  guardar() {
+    const libro = new Libro();
+    libro.nombre = this.libroFormGuardar.get('nombreGuardar').value;
   }
 }
