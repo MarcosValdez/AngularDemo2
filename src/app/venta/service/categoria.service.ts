@@ -1,13 +1,17 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { AppServiceBase } from 'src/app/core/appService';
 
 @Injectable({
   providedIn: 'root',
 })
-export class VentaService extends AppServiceBase {
+export class CategoriaService extends AppServiceBase {
+  listarCategorias(): Observable<any> {
+    return this.get('categoria/list').pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.log('Client error', error.error.message);

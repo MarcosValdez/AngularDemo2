@@ -37,4 +37,9 @@ export class AppServiceBase {
     const urlApi = `${environment.api.baseUrl}${api}/${id}`;
     return this.http.delete(urlApi);
   }
+
+  getExcel(api: string, body: any) {
+    const urlApi = `${environment.api.baseUrl}${api}`;
+    return this.http.post(urlApi, body, { responseType: 'blob' });
+  }
 }

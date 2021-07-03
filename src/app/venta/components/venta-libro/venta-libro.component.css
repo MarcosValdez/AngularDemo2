@@ -1,21 +1,21 @@
 /* @extend display-flex; */
-display-flex,
+/* display-flex,
 .header,
 .form-group {
   display: flex;
   display: -webkit-flex;
-}
+} */
 
 /* @extend list-type-ulli; */
-list-type-ulli {
+/* list-type-ulli {
   list-style-type: none;
   margin: 0;
   padding: 0;
-}
+} */
 
 /* poppins-300 - latin */
 
-a:focus,
+/* a:focus,
 a:active {
   text-decoration: none;
   outline: none;
@@ -388,4 +388,4 @@ input {
   flex-direction: row;
   display: flex;
   justify-content: space-around;
-}
+} */

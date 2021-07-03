@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   api: {
-    baseUrl: 'https://pruebademo2s.herokuapp.com/',
+    baseUrl: 'https://pruebademo2s.herokuapp.com/api/v1/',
+    //baseUrl: 'http://localhost:8080/api/v1/',
   },
   useHash: false,
 };

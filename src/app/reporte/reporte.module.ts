@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { ReporteRoutingModule } from './reporte-routing.module';
 import { GenerarReporteComponent } from './components/generar-reporte/generar-reporte.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    GenerarReporteComponent
-  ],
+  declarations: [GenerarReporteComponent],
   imports: [
     CommonModule,
-    ReporteRoutingModule
-  ]
+    ReactiveFormsModule,
+    FormsModule,
+    ReporteRoutingModule,
+  ],
 })
-export class ReporteModule { }
+export class ReporteModule {}

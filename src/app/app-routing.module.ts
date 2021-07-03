@@ -4,8 +4,11 @@ import { GenerarReporteComponent } from './reporte/components/generar-reporte/ge
 import { VentaLibroComponent } from './venta/components/venta-libro/venta-libro.component';
 
 const routes: Routes = [
-
-  
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'venta',
+  },
   {
     path: 'venta',
     loadChildren: () =>
@@ -13,7 +16,9 @@ const routes: Routes = [
   },
   {
     path: 'reporte',
-    component: GenerarReporteComponent,
+
+    loadChildren: () =>
+      import('./reporte/reporte.module').then((m) => m.ReporteModule),
   },
 ];
 
