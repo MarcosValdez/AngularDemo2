@@ -15,11 +15,18 @@ import { VentaService } from '../../service/venta.service';
   styleUrls: ['./venta-libro.component.css'],
 })
 export class VentaLibroComponent implements OnInit {
-  filterlibro:string ="";
+  filterlibro: string = '';
   libros: Libro[];
   libroForm: FormGroup;
   libroFormGuardar: FormGroup;
   categorias: Categoria;
+  numRows = 10;
+  pageActual: number;
+  previousLabel = 'Anterior';
+  nextLabel = 'Siguiente';
+  responsive: boolean = true;
+  //filtro de cursos
+  cursoFilter: string = '';
   constructor(
     private libroService: LibroService,
     private formBuilder: FormBuilder,
@@ -51,7 +58,6 @@ export class VentaLibroComponent implements OnInit {
     this.libroService.listarLibros().subscribe((x) => {
       this.libros = x;
       console.log(x);
-      
     });
   }
 

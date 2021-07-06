@@ -71,12 +71,15 @@
           </div>
         </form> -->
         <div class="row">
-          <div class="col-10">
-            <input type="text" [(ngModel)]="filterlibro"
+          <div class="col-9">
+            <input
+              type="text"
+              [(ngModel)]="filterlibro"
               placeholder="Ingrese nombre de libro"
-              class="form-control" />
+              class="form-control"
+            />
           </div>
-          <div class="col-2">
+          <div class="col-1">
             <button
               type="button"
               class="btn btn-primary"
@@ -85,6 +88,13 @@
             >
               Nuevo
             </button>
+          </div>
+          <div class="col-2">
+            <select name="" class="form-control" id="" [(ngModel)]="numRows">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+            </select>
           </div>
         </div>
       </div>
@@ -105,12 +115,18 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let l of libros | filter: { nombre: filterlibro}">
+        <tr
+          *ngFor="
+            let l of libros
+              | filter: { nombre: filterlibro }
+              | paginate: { itemsPerPage: numRows, currentPage: pageActual }
+          "
+        >
           <td>{{ l?.libroId }}</td>
           <td>{{ l?.nombre }}</td>
           <td>{{ l?.autor?.nombre }}</td>
           <td>{{ l?.categoria?.nombre }}</td>
-          <td>{{ l?.precio }}</td>
+          <td>$ {{ l?.precio }}</td>
           <td>{{ l?.cantidad }}</td>
           <td class="total">
             <button
@@ -125,6 +141,18 @@
         </tr>
       </tbody>
     </table>
+    <div class="d-flex flex-row-reverse">
+      <ng-container>
+        <pagination-controls
+          class="my-pagination"
+          maxSize="5"
+          [responsive]="responsive"
+          [previousLabel]="previousLabel"
+          [nextLabel]="nextLabel"
+          (pageChange)="pageActual = $event"
+        ></pagination-controls>
+      </ng-container>
+    </div>
   </div>
 </div>
 <!-- </body> -->

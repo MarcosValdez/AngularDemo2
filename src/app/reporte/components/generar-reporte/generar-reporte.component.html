@@ -128,7 +128,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let l of libros">
+        <tr
+          *ngFor="
+            let l of libros
+              | paginate: { itemsPerPage: 10, currentPage: pageActual }
+          "
+        >
           <td scope="row">{{ l?.nombre }}</td>
           <td>{{ l?.descripcion }}</td>
           <td>{{ l?.autor }}</td>
@@ -138,5 +143,17 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div class="d-flex flex-row-reverse">
+    <ng-container>
+      <pagination-controls
+        class="my-pagination"
+        maxSize="5"
+        [responsive]="responsive"
+        [previousLabel]="previousLabel"
+        [nextLabel]="nextLabel"
+        (pageChange)="pageActual = $event"
+      ></pagination-controls>
+    </ng-container>
   </div>
 </div>

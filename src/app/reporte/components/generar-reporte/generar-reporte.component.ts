@@ -16,6 +16,11 @@ export class GenerarReporteComponent implements OnInit {
   libros: Reporte[];
   categorias: Categoria[];
   formLibro: FormGroup;
+
+  pageActual: number;
+  previousLabel = 'Anterior';
+  nextLabel = 'Siguiente';
+  responsive: boolean = true;
   constructor(
     private libroService: LibroService,
     private formBuilder: FormBuilder,
