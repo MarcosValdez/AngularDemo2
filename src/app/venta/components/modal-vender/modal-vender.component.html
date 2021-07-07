@@ -1,1 +1,112 @@
-<p>modal-vender works!</p>
+<div class="modal-header">
+  <h5 class="modal-title">{{ libro?.nombre }}</h5>
+  <button
+    type="button"
+    class="btn-close"
+    data-dismiss="modal"
+    aria-label="Close"
+    (click)="closeModal('dismiss')"
+  >
+    <span aria-hidden="true"></span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-5">
+        <div class="row">
+          <div class="col-12">
+            <img
+              src="https://www.planetadelibros.com/usuaris/libros/fotos/307/m_libros/portada_terramar-50-aniversario__202007211257.jpg"
+              alt=""
+            />
+            <div class="col-12">
+              <h1>$ {{ libro?.precio }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-7">
+        <div class="row">
+          <!-- <div class="col-md-4 my-2">Nombre</div>
+          <div class="col-md-8 my-2">
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              value="{{ libro?.nombre }}"
+            />
+          </div> -->
+          <div class="col-md-4 my-2">Categoria</div>
+          <div class="col-md-8 my-2">
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              value="{{ libro?.categoria?.nombre }}"
+            />
+          </div>
+          <div class="col-md-4 my-2">Descripcion</div>
+          <div class="col-md-8 my-2">
+            <textarea readonly class="form-control" rows="5">{{
+              libro?.descripcion
+            }}</textarea>
+          </div>
+
+          <div class="col-md-4 my-2">Autor</div>
+          <div class="col-md-8 my-2">
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              value="{{ libro?.autor?.nombre }}"
+            />
+          </div>
+          <div class="col-md-4 my-2">Stock</div>
+          <div class="col-md-8 my-2">
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              value="{{ libro?.cantidad }}"
+            />
+          </div>
+          <!-- <div class="col-md-4 my-2">Precio</div>
+          <div class="col-md-8 my-2">
+            <input
+              type="number"
+              readonly
+              class="form-control"
+              value="{{ libro?.precio }}"
+            />
+          </div> -->
+          <div class="col-md-4 my-2">N° de paginas</div>
+          <div class="col-md-8 my-2">
+            <input
+              type="number"
+              readonly
+              class="form-control"
+              value="{{ libro?.paginas }}"
+            />
+          </div>
+          <div class="col-md-4 my-2">Editorial</div>
+          <div class="col-md-8 my-2">
+            <input
+              type="text"
+              readonly
+              class="form-control"
+              value="{{ libro?.editorial?.nombre }}"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" *ngIf="libro?.cantidad > 0">
+    Comprar
+  </button>
+</div>

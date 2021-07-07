@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Parametros } from 'src/app/reporte/models/parametros';
 import { Autor } from '../../model/autor';
 import { Categoria } from '../../model/categoria';
@@ -8,6 +9,7 @@ import { Libro } from '../../model/libro';
 import { CategoriaService } from '../../service/categoria.service';
 import { LibroService } from '../../service/libro.service';
 import { VentaService } from '../../service/venta.service';
+import { ModalNuevoLibroComponent } from '../modal-nuevo-libro/modal-nuevo-libro.component';
 
 @Component({
   selector: 'app-venta-libro',
@@ -18,7 +20,6 @@ export class VentaLibroComponent implements OnInit {
   filterlibro: string = '';
   libros: Libro[];
   libroForm: FormGroup;
-  libroFormGuardar: FormGroup;
   categorias: Categoria;
   numRows = 10;
   pageActual: number;
@@ -30,7 +31,8 @@ export class VentaLibroComponent implements OnInit {
   constructor(
     private libroService: LibroService,
     private formBuilder: FormBuilder,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -40,17 +42,6 @@ export class VentaLibroComponent implements OnInit {
       autor: [''],
       categoria: [''],
       titulo: [''],
-    });
-    this.libroFormGuardar = this.formBuilder.group({
-      autorGuardar: ['', Validators.required],
-      categoriaGuardar: ['', Validators.required],
-      nombreGuardar: ['', Validators.required],
-      precio: ['', Validators.required],
-      cantidad: ['', Validators.required],
-      editorial: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      // fecha: ['', Validators.required],
-      paginas: ['', Validators.required],
     });
   }
 
@@ -79,32 +70,25 @@ export class VentaLibroComponent implements OnInit {
     });
   }
 
-  guardar() {
-    const libro = new Libro();
-    libro.nombre = this.libroFormGuardar.get('nombreGuardar').value;
-    let autor = new Autor();
-    autor.nombre = this.libroFormGuardar.get('autorGuardar').value;
-    libro.autor = autor;
-    let categoria = new Categoria();
-    categoria.categoriaId =
-      this.libroFormGuardar.get('categoriaGuardar').value?.categoriaId;
-    libro.categoria = categoria;
-    libro.precio = this.libroFormGuardar.get('precio').value;
-    libro.cantidad = this.libroFormGuardar.get('cantidad').value;
-    let editorial = new Editorial();
-    editorial.nombre = this.libroFormGuardar.get('editorial').value;
-    libro.editorial = editorial;
-    //libro.fecha = this.libroFormGuardar.get('fecha').value;
-    libro.descripcion = this.libroFormGuardar.get('descripcion').value;
-    libro.paginas = this.libroFormGuardar.get('paginas').value;
-    this.libroService.save(libro).subscribe((x) => {
-      console.log(x);
-      document.getElementById('cerrar').click();
-      this.listarLibros();
-    });
-  }
-
   vender(id: number) {
     this.libroService.vender(id).subscribe((x) => this.listarLibros());
+  }
+
+  openModal() {
+    const modalRef = this.modalService.open(ModalNuevoLibroComponent, {
+      scrollable: true,
+      windowClass: 'myCustomModalClass',
+      size: 'lg',
+    });
+    let data = {};
+    modalRef.componentInstance.fromParent = data;
+    modalRef.result.then(
+      (result) => {
+        // Intencional
+      },
+      (reason) => {
+        // Intencional
+      }
+    );
   }
 }

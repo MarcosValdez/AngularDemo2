@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Categoria } from '../../model/categoria';
 import { Libro } from '../../model/libro';
 import { CategoriaService } from '../../service/categoria.service';
 import { LibroService } from '../../service/libro.service';
+import { ModalVenderComponent } from '../modal-vender/modal-vender.component';
 
 @Component({
   selector: 'app-catalogo',
@@ -22,7 +24,8 @@ export class CatalogoComponent implements OnInit {
   busqueda: number[];
   constructor(
     private categoriaService: CategoriaService,
-    private libroService: LibroService
+    private libroService: LibroService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -75,5 +78,25 @@ export class CatalogoComponent implements OnInit {
         return false;
       });
     }
+  }
+
+  openModal(id: number) {
+    const modalRef = this.modalService.open(ModalVenderComponent, {
+      scrollable: true,
+      windowClass: 'myCustomModalClass',
+      size: 'lg',
+    });
+    let data = {
+      id,
+    };
+    modalRef.componentInstance.fromParent = data;
+    modalRef.result.then(
+      (result) => {
+        // Intencional
+      },
+      (reason) => {
+        // Intencional
+      }
+    );
   }
 }

@@ -33,6 +33,10 @@ export class LibroService extends AppServiceBase {
     return this.get(`libro/vender/${id}`).pipe(catchError(this.handleError));
   }
 
+  obtenerLibro(id: number) {
+    return this.get(`libro/list/${id}`).pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.log('Client error', error.error.message);

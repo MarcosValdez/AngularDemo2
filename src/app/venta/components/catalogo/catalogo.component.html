@@ -56,7 +56,13 @@
                 {{ l?.descripcion }}
               </p>
               <span>
-                <a href="#" class="btn btn-primary">Comprar</a>
+                <button
+                  href="#"
+                  class="btn btn-primary"
+                  (click)="openModal(l?.libroId)"
+                >
+                  Comprar
+                </button>
               </span>
             </div>
           </div>
