@@ -1,14 +1,15 @@
-html,
+/* html,
 body {
   height: 100%;
   font-family: lato;
-}
+} */
 
 .page-footer2 {
   background-color: #000000;
   width: 100%;
   height: auto;
 }
+
 .footer-container {
   text-align: center;
   line-height: 50px;

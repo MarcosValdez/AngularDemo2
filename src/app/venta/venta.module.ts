@@ -6,9 +6,12 @@ import { VentaLibroComponent } from './components/venta-libro/venta-libro.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './pipe/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CatalogoComponent } from './components/catalogo/catalogo.component';
+import { ModalVenderComponent } from './components/modal-vender/modal-vender.component';
+import { ModalNuevoLibroComponent } from './components/modal-nuevo-libro/modal-nuevo-libro.component';
 
 @NgModule({
-  declarations: [VentaLibroComponent, FilterPipe],
+  declarations: [VentaLibroComponent, FilterPipe, CatalogoComponent, ModalVenderComponent, ModalNuevoLibroComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

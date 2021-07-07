@@ -1,0 +1,16 @@
+img{
+    height: 350px;
+}
+.card{
+    height: 650px;
+}
+
+#fondo{
+    background-image: url("https://pijamasurf.com/imagen_nota/que_libros_debes_leer_para_ser_un_lector_en_serio_esta_lista_con_52_sugerencias_te_da_algunas_ideas.jpg?width=1200&enable=upscale");
+    
+}
+
+#capa{
+    background-color: black;
+    opacity: 0.7;
+}
