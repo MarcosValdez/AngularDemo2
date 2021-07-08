@@ -9,9 +9,10 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CatalogoComponent } from './components/catalogo/catalogo.component';
 import { ModalVenderComponent } from './components/modal-vender/modal-vender.component';
 import { ModalNuevoLibroComponent } from './components/modal-nuevo-libro/modal-nuevo-libro.component';
+import { DatosCompradorComponent } from './components/datos-comprador/datos-comprador.component';
 
 @NgModule({
-  declarations: [VentaLibroComponent, FilterPipe, CatalogoComponent, ModalVenderComponent, ModalNuevoLibroComponent],
+  declarations: [VentaLibroComponent, FilterPipe, CatalogoComponent, ModalVenderComponent, ModalNuevoLibroComponent, DatosCompradorComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

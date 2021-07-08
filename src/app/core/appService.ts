@@ -33,7 +33,7 @@ export class AppServiceBase {
     return this.http.put(urlApi, body);
   }
 
-  delete(api: string, id: string) {
+  delete(api: string, id: number) {
     const urlApi = `${environment.api.baseUrl}${api}/${id}`;
     return this.http.delete(urlApi);
   }

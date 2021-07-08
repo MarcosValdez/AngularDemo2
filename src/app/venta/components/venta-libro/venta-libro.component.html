@@ -42,8 +42,8 @@
             <th>TÍTULO</th>
             <th>AUTOR</th>
             <th>CATEGORIA</th>
-            <th>PRECIO</th>
-            <th>STOCK</th>
+            <th class="text-center">PRECIO</th>
+            <th class="text-center">STOCK</th>
             <th></th>
           </tr>
         </thead>
@@ -62,14 +62,26 @@
             <td>{{ l?.categoria?.nombre }}</td>
             <td class="text-center">$ {{ l?.precio }}</td>
             <td class="text-center">{{ l?.cantidad }}</td>
-            <td class="total">
+            <td>
+              <button class="btn btn-primary" type="button">
+                <i class="fas fa-info-circle"></i>
+              </button>
+            </td>
+            <td>
+              <button class="btn btn-success" type="button">
+                <i
+                  class="fas fa-edit"
+                  (click)="openModalEditar(l?.libroId)"
+                ></i>
+              </button>
+            </td>
+            <td>
               <button
-                class="btn btn-success"
+                class="btn btn-danger"
                 type="button"
-                id="flexCheckDefault"
-                (click)="vender(l?.libroId)"
+                (click)="eliminar(l?.libroId)"
               >
-                Vender
+                <i class="far fa-trash-alt"></i>
               </button>
             </td>
           </tr>

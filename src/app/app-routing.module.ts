@@ -1,17 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './auth/components/login/login.component';
-import { GenerarReporteComponent } from './reporte/components/generar-reporte/generar-reporte.component';
-import { VentaLibroComponent } from './venta/components/venta-libro/venta-libro.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'venta',
+    redirectTo: 'inventario',
   },
   {
-    path: 'venta',
+    path: 'inventario',
     loadChildren: () =>
       import('./venta/venta.module').then((m) => m.VentaModule),
   },
@@ -23,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
 ];
 

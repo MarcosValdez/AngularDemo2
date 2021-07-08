@@ -46,10 +46,8 @@ export class GenerarReporteComponent implements OnInit {
     parametro.nombre = this.formLibro.get('nombre')?.value;
     parametro.fechaFin = this.formLibro.get('fechaFin')?.value;
     parametro.fechaInicio = this.formLibro.get('fechaInicio')?.value;
-    console.log(parametro);
     this.libroService.listarFiltro(parametro).subscribe((x) => {
       this.libros = x;
-      console.log(x);
     });
   }
 
@@ -61,7 +59,6 @@ export class GenerarReporteComponent implements OnInit {
     parametro.fechaFin = this.formLibro.get('fechaFin')?.value;
     parametro.fechaInicio = this.formLibro.get('fechaInicio')?.value;
     this.libroService.exportarExcel(parametro).subscribe((result) => {
-      console.log(result);
       const url = window.URL.createObjectURL(result);
       const a = document.createElement('a');
       a.setAttribute('style', 'display:none;');
@@ -81,14 +78,12 @@ export class GenerarReporteComponent implements OnInit {
     this.formLibro.get('fechaInicio')?.setValue('');
     this.libroService.listarFiltro(new Parametros()).subscribe((x) => {
       this.libros = x;
-      console.log(x);
     });
   }
 
   listarCategorias() {
     this.categoriaService.listarCategorias().subscribe((x) => {
       this.categorias = x;
-      console.log(x);
     });
   }
 }

@@ -1,0 +1,81 @@
+<div class="modal-header">
+  <h5 class="modal-title">Datos del comprador</h5>
+  <button
+    type="button"
+    class="btn-close"
+    data-dismiss="modal"
+    aria-label="Close"
+    (click)="closeModal('dismiss')"
+  >
+    <span aria-hidden="true"></span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <div class="container-fluid">
+    <div class="row" [formGroup]="compradorForm">
+      <div class="col-12 my-2">
+        <label for="">Nombre</label>
+        <input
+          type="text"
+          class="form-control mt-2"
+          name=""
+          id=""
+          formControlName="nombre"
+          [class.is-invalid]="nombreNoValido"
+          ngbAutofocus
+        />
+        <small class="text-danger mt-3 mt-lg-0" *ngIf="nombreNoValido"
+          >Ingrese el nombre del comprador</small
+        >
+      </div>
+
+      <div class="col-12 my-2">
+        <label for="">Apellidos</label>
+        <input
+          type="text"
+          class="form-control mt-2"
+          name=""
+          id=""
+          formControlName="apellido"
+          [class.is-invalid]="apellidoNoValido"
+        />
+        <small class="text-danger mt-3 mt-lg-0" *ngIf="apellidoNoValido"
+          >Ingrese el apellido del comprador</small
+        >
+      </div>
+      <div class="col-12 my-2">
+        <label for="">DNI</label>
+        <input
+          type="text"
+          class="form-control mt-2"
+          name=""
+          id=""
+          formControlName="dni"
+          [class.is-invalid]="dniNoValido"
+        />
+        <small class="text-danger mt-3 mt-lg-0" *ngIf="dniNoValido"
+          >Ingrese el dni del comprador</small
+        >
+      </div>
+      <div class="col-12 my-2">
+        <label for="">Numero de cuenta</label>
+        <input
+          type="text"
+          class="form-control mt-2"
+          name=""
+          id=""
+          formControlName="cuenta"
+          [class.is-invalid]="cuentaNoValido"
+        />
+        <small class="text-danger mt-3 mt-lg-0" *ngIf="cuentaNoValido"
+          >Ingrese la cuenta del comprador</small
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="pagar()">Pagar</button>
+</div>
