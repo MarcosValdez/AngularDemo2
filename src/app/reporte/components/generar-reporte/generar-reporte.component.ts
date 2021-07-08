@@ -50,14 +50,15 @@ export class GenerarReporteComponent implements OnInit {
     parametro.nombre = this.formLibro.get('nombre')?.value;
     parametro.fechaFin = this.formLibro.get('fechaFin')?.value;
     parametro.fechaInicio = this.formLibro.get('fechaInicio')?.value;
-    /* this.libroService.listarFiltro(parametro).subscribe((x) => {
+    this.libroService.listarFiltro(parametro).subscribe((x) => {
       this.libros = x;
-    }); */
+      console.log(x);
+    });
 
-    this.ventaService.listaVentas().subscribe((x: Venta[]) => {
+    /* this.ventaService.listaVentas().subscribe((x: Venta[]) => {
       console.log(x);
       this.ventas = x;
-    });
+    }); */
   }
 
   onFnExportar() {

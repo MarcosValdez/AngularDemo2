@@ -14,7 +14,7 @@ export class LibroService extends AppServiceBase {
     return this.get('libro/list').pipe(catchError(this.handleError));
   }
   exportarExcel(parametrosDTO: Parametros) {
-    return this.getExcel('libro/export', parametrosDTO).pipe(
+    return this.getExcel('libro/export/reporte', parametrosDTO).pipe(
       catchError(this.handleError)
     );
   }
@@ -39,6 +39,12 @@ export class LibroService extends AppServiceBase {
 
   eliminar(id: number) {
     return this.delete(`libro/delete`, id).pipe(catchError(this.handleError));
+  }
+
+  descargar() {
+    return this.post('libro/export/inventario', { id: 1 }).pipe(
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {

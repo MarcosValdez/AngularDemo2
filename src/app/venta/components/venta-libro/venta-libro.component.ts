@@ -58,7 +58,7 @@ export class VentaLibroComponent implements OnInit {
       this.categorias = x;
     });
   }
-  buscar() {
+  /*  buscar() {
     const parametro = new Parametros();
     parametro.autor = this.libroForm.get('autor')?.value;
     parametro.categoria = this.libroForm.get('categoria')?.value?.categoriaId;
@@ -66,7 +66,7 @@ export class VentaLibroComponent implements OnInit {
     this.libroService.listarFiltro(parametro).subscribe((x) => {
       this.libros = x;
     });
-  }
+  } */
 
   vender(id: number) {
     this.libroService.vender(id).subscribe((x) => this.listarLibros());
@@ -164,5 +164,18 @@ export class VentaLibroComponent implements OnInit {
   }
   cambioNombre() {
     this.pageActual = 1;
+  }
+
+  descargar() {
+    this.libroService.descargar().subscribe((result) => {
+      const url = window.URL.createObjectURL(result);
+      const a = document.createElement('a');
+      a.setAttribute('style', 'display:none;');
+      document.body.appendChild(a);
+      a.href = url;
+      a.download = 'Inventario.xls';
+      a.click();
+      return url;
+    });
   }
 }

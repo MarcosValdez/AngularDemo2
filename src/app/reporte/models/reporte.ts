@@ -1,6 +1,7 @@
 export class Reporte {
   id: number;
-  nombre: string;
+  nombrelibro: string;
+  comprador: string;
   autor: string;
   categoria: string;
   fecha: Date;
