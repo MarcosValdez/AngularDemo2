@@ -12,6 +12,10 @@ export class VentaService extends AppServiceBase {
   guardarVenta(venta: Venta) {
     return this.post('venta/save', venta).pipe(catchError(this.handleError));
   }
+
+  listaVentas() {
+    return this.get('venta/list').pipe(catchError(this.handleError));
+  }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.log('Client error', error.error.message);

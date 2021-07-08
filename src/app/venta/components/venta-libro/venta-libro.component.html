@@ -3,29 +3,47 @@
     <div class="card">
       <div class="card-body">
         <div class="row">
-          <div class="input-group">
-            <div class="col-8">
-              <input type="text" [(ngModel)]="filterlibro" placeholder="Ingrese nombre del libro" class="form-control"
-                (keyup)="cambioNombre()" />
-            </div>
-            <div class="col-2">
-              <button class="btn btn-outline-danger ml-0" (click)="borrarBusqueda()">
-                X
-              </button>
-            </div>
-            <div class="col-1 ml-auto">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                (click)="openModal()">
-                Nuevo
-              </button>
-            </div>
-            <div class="col-1">
-              <select name="" class="form-control" id="" [(ngModel)]="numRows">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-              </select>
-            </div>
+          <div class="col-7">
+            <input
+              type="text"
+              [(ngModel)]="filterlibro"
+              placeholder="Ingrese nombre de libro"
+              class="form-control"
+              (keyup)="cambioNombre()"
+            />
+          </div>
+          <div class="col-1 m-0">
+            <button class="btn btn-outline-danger m-0" (click)="borrarBusqueda()">
+              X
+            </button>
+          </div>
+
+          <div class="col-1">
+            <select name="" class="form-control" id="" [(ngModel)]="numRows">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+            </select>
+          </div>
+          <div class="col-1">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="openModal()"
+            >
+              Nuevo
+            </button>
+          </div>
+          <div class="col-2">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+            >
+              Descargar libros
+            </button>
           </div>
         </div>
       </div>

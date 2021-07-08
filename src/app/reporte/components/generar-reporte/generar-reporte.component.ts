@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Categoria } from 'src/app/venta/model/categoria';
 import { Libro } from 'src/app/venta/model/libro';
+import { Venta } from 'src/app/venta/models/venta';
 import { CategoriaService } from 'src/app/venta/service/categoria.service';
 import { LibroService } from 'src/app/venta/service/libro.service';
+import { VentaService } from 'src/app/venta/service/venta.service';
 import { Parametros } from '../../models/parametros';
 import { Reporte } from '../../models/reporte';
 
@@ -16,6 +18,7 @@ export class GenerarReporteComponent implements OnInit {
   libros: Reporte[];
   categorias: Categoria[];
   formLibro: FormGroup;
+  ventas: Venta[];
 
   pageActual: number;
   previousLabel = 'Anterior';
@@ -24,7 +27,8 @@ export class GenerarReporteComponent implements OnInit {
   constructor(
     private libroService: LibroService,
     private formBuilder: FormBuilder,
-    private categoriaService: CategoriaService
+    private categoriaService: CategoriaService,
+    private ventaService: VentaService
   ) {}
 
   ngOnInit(): void {
@@ -46,8 +50,13 @@ export class GenerarReporteComponent implements OnInit {
     parametro.nombre = this.formLibro.get('nombre')?.value;
     parametro.fechaFin = this.formLibro.get('fechaFin')?.value;
     parametro.fechaInicio = this.formLibro.get('fechaInicio')?.value;
-    this.libroService.listarFiltro(parametro).subscribe((x) => {
+    /* this.libroService.listarFiltro(parametro).subscribe((x) => {
       this.libros = x;
+    }); */
+
+    this.ventaService.listaVentas().subscribe((x: Venta[]) => {
+      console.log(x);
+      this.ventas = x;
     });
   }
 
