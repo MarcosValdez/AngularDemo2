@@ -103,8 +103,8 @@ export class VentaLibroComponent implements OnInit {
 
   eliminar(id: number) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: 'Estas seguro?',
+      text: 'No podrás revertir cuando elimines el libro!',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -114,7 +114,7 @@ export class VentaLibroComponent implements OnInit {
       if (result.isConfirmed) {
         this.libroService.eliminar(id).subscribe((x) => {
           console.log(x);
-          Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+          Swal.fire('Eliminado!', 'El Libro ha sido eliminado', 'success');
         });
       }
     });
@@ -177,5 +177,8 @@ export class VentaLibroComponent implements OnInit {
       a.click();
       return url;
     });
+  }
+  borrarBusqueda() {
+    this.filterlibro = '';
   }
 }
