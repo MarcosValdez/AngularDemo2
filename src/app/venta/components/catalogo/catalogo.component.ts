@@ -50,7 +50,6 @@ export class CatalogoComponent implements OnInit {
     this.libroService.listarLibros().subscribe((x) => {
       this.libros = x;
       this.librosGenerales = x;
-      console.log(x);
     });
   }
 

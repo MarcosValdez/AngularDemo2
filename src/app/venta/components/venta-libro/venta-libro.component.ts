@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Parametros } from 'src/app/reporte/models/parametros';
+import Swal from 'sweetalert2';
 import { Autor } from '../../model/autor';
 import { Categoria } from '../../model/categoria';
 import { Editorial } from '../../model/editorial';
@@ -10,6 +11,7 @@ import { CategoriaService } from '../../service/categoria.service';
 import { LibroService } from '../../service/libro.service';
 import { VentaService } from '../../service/venta.service';
 import { ModalNuevoLibroComponent } from '../modal-nuevo-libro/modal-nuevo-libro.component';
+import { VerLibroComponent } from '../ver-libro/ver-libro.component';
 
 @Component({
   selector: 'app-venta-libro',
@@ -48,14 +50,12 @@ export class VentaLibroComponent implements OnInit {
   listarLibros() {
     this.libroService.listarLibros().subscribe((x) => {
       this.libros = x;
-      console.log(x);
     });
   }
 
   listarCategorias() {
     this.categoriaService.listarCategorias().subscribe((x) => {
       this.categorias = x;
-      console.log(x);
     });
   }
   buscar() {
@@ -63,10 +63,8 @@ export class VentaLibroComponent implements OnInit {
     parametro.autor = this.libroForm.get('autor')?.value;
     parametro.categoria = this.libroForm.get('categoria')?.value?.categoriaId;
     parametro.nombre = this.libroForm.get('titulo')?.value;
-    console.log(parametro);
     this.libroService.listarFiltro(parametro).subscribe((x) => {
       this.libros = x;
-      console.log(x);
     });
   }
 
@@ -80,15 +78,91 @@ export class VentaLibroComponent implements OnInit {
       windowClass: 'myCustomModalClass',
       size: 'lg',
     });
-    let data = {};
+    let data = {
+      editar: false,
+    };
     modalRef.componentInstance.fromParent = data;
     modalRef.result.then(
       (result) => {
         // Intencional
+        if (result?.guardado) {
+          this.listarLibros();
+          Swal.fire({
+            icon: 'success',
+            title: 'Libro guardado',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
       },
       (reason) => {
         // Intencional
       }
     );
+  }
+
+  eliminar(id: number) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.libroService.eliminar(id).subscribe((x) => {
+          console.log(x);
+          Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
+        });
+      }
+    });
+  }
+
+  openModalEditar(id: number) {
+    const modalRef = this.modalService.open(ModalNuevoLibroComponent, {
+      scrollable: true,
+      windowClass: 'myCustomModalClass',
+      size: 'lg',
+    });
+    let data = {
+      editar: true,
+      id,
+    };
+    modalRef.componentInstance.fromParent = data;
+    modalRef.result.then(
+      (result) => {
+        if (result?.guardado) {
+          this.listarLibros();
+          Swal.fire({
+            icon: 'success',
+            title: 'Libro guardado',
+            showConfirmButton: false,
+            timer: 3000,
+          });
+        }
+      },
+      (reason) => {}
+    );
+  }
+
+  openModalLibro(id: number) {
+    const modalRef = this.modalService.open(VerLibroComponent, {
+      scrollable: true,
+      windowClass: 'myCustomModalClass',
+      size: 'lg',
+    });
+    let data = {
+      id,
+    };
+    modalRef.componentInstance.fromParent = data;
+    modalRef.result.then(
+      (result) => {},
+      (reason) => {}
+    );
+  }
+  cambioNombre() {
+    this.pageActual = 1;
   }
 }

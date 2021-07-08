@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import Swal from 'sweetalert2';
 import { Libro } from '../../model/libro';
 import { LibroService } from '../../service/libro.service';
+import { DatosCompradorComponent } from '../datos-comprador/datos-comprador.component';
 
 @Component({
   selector: 'app-modal-vender',
@@ -13,7 +15,8 @@ export class ModalVenderComponent implements OnInit {
   libro: Libro;
   constructor(
     public activeModal: NgbActiveModal,
-    private libroService: LibroService
+    private libroService: LibroService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
@@ -25,8 +28,35 @@ export class ModalVenderComponent implements OnInit {
 
   obtenerLibro() {
     this.libroService.obtenerLibro(this.fromParent.id).subscribe((x: Libro) => {
-      console.log(x);
       this.libro = x;
     });
+  }
+  openModal(id: number) {
+    const modalRef = this.modalService.open(DatosCompradorComponent, {
+      scrollable: true,
+      windowClass: 'myCustomModalClass',
+      size: 'md',
+    });
+    let data = {
+      id: this.fromParent.id,
+    };
+    modalRef.componentInstance.fromParent = data;
+    modalRef.result.then(
+      (result) => {
+        console.log(result);
+        if (result?.compra) {
+          this.closeModal('cerrar');
+          Swal.fire({
+            icon: 'success',
+            title: 'Compra realizada',
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        }
+      },
+      (reason) => {
+        // Intencional
+      }
+    );
   }
 }

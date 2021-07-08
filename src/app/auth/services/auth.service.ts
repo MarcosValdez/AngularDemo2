@@ -1,17 +1,18 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AppServiceBase } from 'src/app/core/appService';
-import { Venta } from '../models/venta';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root',
 })
-export class VentaService extends AppServiceBase {
-  guardarVenta(venta: Venta) {
-    return this.post('venta/save', venta).pipe(catchError(this.handleError));
+export class AuthService extends AppServiceBase {
+  login(user: Usuario) {
+    return this.post('usuario/login', user).pipe(catchError(this.handleError));
   }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       console.log('Client error', error.error.message);

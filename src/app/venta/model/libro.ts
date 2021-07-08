@@ -10,7 +10,8 @@ export class Libro {
   nombre: string;
   descripcion: string;
   paginas: any;
-  fecha: Date;
+  anio: number;
   precio: string;
   cantidad: number;
+  imagen: string;
 }

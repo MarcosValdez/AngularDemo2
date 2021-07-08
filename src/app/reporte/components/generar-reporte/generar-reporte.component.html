@@ -20,7 +20,89 @@
 </div>
 
 <div class="container mt-3 mb-5" [formGroup]="formLibro">
-  <div class="card">
+  <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#panelsStayOpen-collapseOne"
+          aria-expanded="true"
+          aria-controls="panelsStayOpen-collapseOne"
+        >
+          Filtros
+        </button>
+      </h2>
+      <div
+        id="panelsStayOpen-collapseOne"
+        class="accordion-collapse collapse show"
+        aria-labelledby="panelsStayOpen-headingOne"
+      >
+        <div class="accordion-body">
+          <div class="row">
+            <div class="col-sm-4">
+              <p>Autor:</p>
+              <input
+                type="text"
+                placeholder="Autor"
+                class="form-control"
+                formControlName="autor"
+              />
+            </div>
+            <div class="col-sm-4">
+              <p>Categoría:</p>
+              <select
+                name=""
+                id="Categoría"
+                formControlName="categoria"
+                class="form-control mt-3"
+              >
+                <option value="" hidden>Seleccione</option>
+                <option *ngFor="let d of categorias" [ngValue]="d">
+                  {{ d.nombre }}
+                </option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <p>Nombre:</p>
+              <input
+                type="text"
+                placeholder="Nombre"
+                class="form-control"
+                formControlName="nombre"
+              />
+            </div>
+          </div>
+
+          <div class="row mt-3">
+            <div class="col-sm-4">
+              <p>Fecha mínima:</p>
+              <input
+                type="date"
+                placeholder="dd/mm/yy"
+                class="form-control"
+                formControlName="fechaInicio"
+              />
+            </div>
+            <div class="col-sm-4">
+              <p>Fecha máxima:</p>
+              <input
+                type="date"
+                placeholder="dd/mm/yy"
+                class="form-control"
+                formControlName="fechaFin"
+              />
+            </div>
+            <div class="col-3 col-md-2 d-flex flex-column-reverse">
+              <button class="btn btn-primary" (click)="buscar()">Buscar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="card">
     <div class="card-body">
       <div class="row">
         <div class="col-sm-4">
@@ -81,8 +163,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>
+
 <div class="container">
   <div class="table-responsive">
     <table class="table table-hover mx-auto">

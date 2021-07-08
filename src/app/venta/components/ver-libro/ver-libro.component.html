@@ -1,6 +1,6 @@
 <div class="modal-header">
   <h5 class="modal-title" id="exampleModalLabel">
-    {{ editar ? "Editar Libro" : "Nuevo Libro" }}
+    {{ libro?.nombre }}
   </h5>
   <button
     type="button"
@@ -12,35 +12,20 @@
 </div>
 <div class="modal-body">
   <div class="container">
-    <div class="row" [formGroup]="libroFormGuardar" autocomplete="off">
-      <div class="col-12 my-2">
-        <label for="">Nombre</label>
-        <input
-          type="text"
-          class="form-control"
-          name=""
-          id=""
-          formControlName="nombreGuardar"
-          ngbAutofocus
-          [class.is-invalid]="nombreNoValido"
-        />
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="nombreNoValido"
-          >Ingrese el nombre</small
-        >
+    <div class="row" [formGroup]="libroForm">
+      <div class="col-4 align-items-middle">
+        <img src="{{ libro?.imagen }}" class="w-75" alt="" />
       </div>
-      <div class="col-12 my-2">
+      <div class="col-8 my-2">
         <label for="">Descripcion</label>
         <textarea
           name=""
           id=""
-          rows="3"
+          rows="5"
           class="form-control"
           formControlName="descripcion"
-          [class.is-invalid]="descripcionNoValido"
+          ngbAutofocus
         ></textarea>
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="descripcionNoValido"
-          >Ingrese la descripcion</small
-        >
       </div>
       <div class="col-12 my-2">
         <label for="">Autor</label>
@@ -50,11 +35,7 @@
           name=""
           id=""
           formControlName="autorGuardar"
-          [class.is-invalid]="autorNoValido"
         />
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="autorNoValido"
-          >Ingrese el autor</small
-        >
       </div>
       <div class="col-md-6 my-2">
         <label for="">Categoria</label>
@@ -63,16 +44,12 @@
           id="Categoría"
           formControlName="categoriaGuardar"
           class="form-control"
-          [class.is-invalid]="categoriaNoValido"
         >
           <option value="" hidden>Seleccione</option>
           <option *ngFor="let d of categorias" [ngValue]="d">
             {{ d.nombre }}
           </option>
         </select>
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="categoriaNoValido"
-          >Ingrese la categoria</small
-        >
       </div>
       <div class="col-md-6 my-2">
         <label for="">N° páginas</label>
@@ -82,11 +59,7 @@
           name=""
           id=""
           formControlName="paginas"
-          [class.is-invalid]="paginasNoValido"
         />
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="paginasNoValido"
-          >Ingrese el número de páginas</small
-        >
       </div>
       <div class="col-12 my-2">
         <label for="">Editorial</label>
@@ -96,11 +69,7 @@
           name=""
           id=""
           formControlName="editorial"
-          [class.is-invalid]="editorialNoValido"
         />
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="editorialNoValido"
-          >Ingrese la editorial</small
-        >
       </div>
       <div class="col-md-6 my-2">
         <label for="">Año de publicación</label>
@@ -110,11 +79,7 @@
           name=""
           id=""
           formControlName="fecha"
-          [class.is-invalid]="fechaNoValido"
         />
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="fechaNoValido"
-          >Ingrese el año de publicación</small
-        >
       </div>
       <div class="col-md-6 my-2">
         <label for="">Precio</label>
@@ -124,11 +89,7 @@
           name=""
           id=""
           formControlName="precio"
-          [class.is-invalid]="precioNoValido"
         />
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="precioNoValido"
-          >Ingrese el precio</small
-        >
       </div>
       <div class="col-12 my-2">
         <label for="">Stock</label>
@@ -138,11 +99,7 @@
           name=""
           id=""
           formControlName="cantidad"
-          [class.is-invalid]="cantidadNoValido"
         />
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="cantidadNoValido"
-          >Ingrese el stock</small
-        >
       </div>
       <div class="col-12 my-2">
         <label for="">Imagen</label>
@@ -152,11 +109,7 @@
           name=""
           id=""
           formControlName="imagen"
-          [class.is-invalid]="imagenValido"
         />
-        <small class="text-danger mt-3 mt-lg-0" *ngIf="imagenValido"
-          >Ingrese la imagen del libro</small
-        >
       </div>
     </div>
   </div>
@@ -169,8 +122,5 @@
     (click)="closeModal('cerrar')"
   >
     Cancelar
-  </button>
-  <button type="button" class="btn btn-success" (click)="validar()">
-    Guardar
   </button>
 </div>
