@@ -165,4 +165,7 @@ export class VentaLibroComponent implements OnInit {
   cambioNombre() {
     this.pageActual = 1;
   }
+  borrarBusqueda() {
+    this.filterlibro = '';
+  }
 }
