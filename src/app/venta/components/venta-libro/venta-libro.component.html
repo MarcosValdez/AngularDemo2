@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-body">
         <div class="row">
-          <div class="col-9">
+          <div class="col-8">
             <input
               type="text"
               [(ngModel)]="filterlibro"
@@ -11,6 +11,14 @@
               class="form-control"
               (keyup)="cambioNombre()"
             />
+          </div>
+
+          <div class="col-1">
+            <select name="" class="form-control" id="" [(ngModel)]="numRows">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+            </select>
           </div>
           <div class="col-1">
             <button
@@ -24,11 +32,13 @@
             </button>
           </div>
           <div class="col-2">
-            <select name="" class="form-control" id="" [(ngModel)]="numRows">
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="15">15</option>
-            </select>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-toggle="modal"
+            >
+              Descargar libros
+            </button>
           </div>
         </div>
       </div>
