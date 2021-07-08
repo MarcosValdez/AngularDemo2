@@ -9,6 +9,7 @@
               [(ngModel)]="filterlibro"
               placeholder="Ingrese nombre de libro"
               class="form-control"
+              (keyup)="cambioNombre()"
             />
           </div>
           <div class="col-1">
@@ -53,17 +54,22 @@
             *ngFor="
               let l of libros
                 | filter: { nombre: filterlibro }
-                | paginate: { itemsPerPage: numRows, currentPage: pageActual }
+                | paginate: { itemsPerPage: numRows, currentPage: pageActual };
+              let i = index
             "
           >
-            <td>{{ l?.libroId }}</td>
+            <td>{{ i + 1 }}</td>
             <td>{{ l?.nombre }}</td>
             <td>{{ l?.autor?.nombre }}</td>
             <td>{{ l?.categoria?.nombre }}</td>
             <td class="text-center">$ {{ l?.precio }}</td>
             <td class="text-center">{{ l?.cantidad }}</td>
             <td>
-              <button class="btn btn-primary" type="button">
+              <button
+                class="btn btn-primary"
+                type="button"
+                (click)="openModalLibro(l?.libroId)"
+              >
                 <i class="fas fa-info-circle"></i>
               </button>
             </td>

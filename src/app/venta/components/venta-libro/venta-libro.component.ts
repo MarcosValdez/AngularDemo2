@@ -11,6 +11,7 @@ import { CategoriaService } from '../../service/categoria.service';
 import { LibroService } from '../../service/libro.service';
 import { VentaService } from '../../service/venta.service';
 import { ModalNuevoLibroComponent } from '../modal-nuevo-libro/modal-nuevo-libro.component';
+import { VerLibroComponent } from '../ver-libro/ver-libro.component';
 
 @Component({
   selector: 'app-venta-libro',
@@ -120,8 +121,6 @@ export class VentaLibroComponent implements OnInit {
   }
 
   openModalEditar(id: number) {
-    console.log(id);
-
     const modalRef = this.modalService.open(ModalNuevoLibroComponent, {
       scrollable: true,
       windowClass: 'myCustomModalClass',
@@ -135,15 +134,35 @@ export class VentaLibroComponent implements OnInit {
     modalRef.result.then(
       (result) => {
         if (result?.guardado) {
+          this.listarLibros();
           Swal.fire({
             icon: 'success',
             title: 'Libro guardado',
             showConfirmButton: false,
-            timer: 2000,
+            timer: 3000,
           });
         }
       },
       (reason) => {}
     );
+  }
+
+  openModalLibro(id: number) {
+    const modalRef = this.modalService.open(VerLibroComponent, {
+      scrollable: true,
+      windowClass: 'myCustomModalClass',
+      size: 'lg',
+    });
+    let data = {
+      id,
+    };
+    modalRef.componentInstance.fromParent = data;
+    modalRef.result.then(
+      (result) => {},
+      (reason) => {}
+    );
+  }
+  cambioNombre() {
+    this.pageActual = 1;
   }
 }

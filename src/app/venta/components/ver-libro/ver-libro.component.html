@@ -1,0 +1,126 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">
+    {{ libro?.nombre }}
+  </h5>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+    (click)="closeModal('close')"
+  ></button>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <div class="row" [formGroup]="libroForm">
+      <div class="col-4 align-items-middle">
+        <img src="{{ libro?.imagen }}" class="w-75" alt="" />
+      </div>
+      <div class="col-8 my-2">
+        <label for="">Descripcion</label>
+        <textarea
+          name=""
+          id=""
+          rows="5"
+          class="form-control"
+          formControlName="descripcion"
+          ngbAutofocus
+        ></textarea>
+      </div>
+      <div class="col-12 my-2">
+        <label for="">Autor</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id=""
+          formControlName="autorGuardar"
+        />
+      </div>
+      <div class="col-md-6 my-2">
+        <label for="">Categoria</label>
+        <select
+          name=""
+          id="Categoría"
+          formControlName="categoriaGuardar"
+          class="form-control"
+        >
+          <option value="" hidden>Seleccione</option>
+          <option *ngFor="let d of categorias" [ngValue]="d">
+            {{ d.nombre }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6 my-2">
+        <label for="">N° páginas</label>
+        <input
+          type="number"
+          class="form-control"
+          name=""
+          id=""
+          formControlName="paginas"
+        />
+      </div>
+      <div class="col-12 my-2">
+        <label for="">Editorial</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id=""
+          formControlName="editorial"
+        />
+      </div>
+      <div class="col-md-6 my-2">
+        <label for="">Año de publicación</label>
+        <input
+          type="number"
+          class="form-control"
+          name=""
+          id=""
+          formControlName="fecha"
+        />
+      </div>
+      <div class="col-md-6 my-2">
+        <label for="">Precio</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id=""
+          formControlName="precio"
+        />
+      </div>
+      <div class="col-12 my-2">
+        <label for="">Stock</label>
+        <input
+          type="number"
+          class="form-control"
+          name=""
+          id=""
+          formControlName="cantidad"
+        />
+      </div>
+      <div class="col-12 my-2">
+        <label for="">Imagen</label>
+        <input
+          type="text"
+          class="form-control"
+          name=""
+          id=""
+          formControlName="imagen"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-danger"
+    data-bs-dismiss="modal"
+    (click)="closeModal('cerrar')"
+  >
+    Cancelar
+  </button>
+</div>
