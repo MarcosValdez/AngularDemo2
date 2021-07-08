@@ -42,7 +42,7 @@ export class LibroService extends AppServiceBase {
   }
 
   descargar() {
-    return this.post('libro/export/inventario', { id: 1 }).pipe(
+    return this.getExcel('libro/export/inventario', { id: 1 }).pipe(
       catchError(this.handleError)
     );
   }
