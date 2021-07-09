@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
-import { Libro } from '../../model/libro';
+import { Libro } from '../../models/libro';
 import { Comprador } from '../../models/comprador';
 import { Venta } from '../../models/venta';
 import { VentaService } from '../../service/venta.service';
@@ -22,7 +22,6 @@ export class DatosCompradorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.fromParent.id);
     this.compradorForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
@@ -55,10 +54,17 @@ export class DatosCompradorComponent implements OnInit {
     );
   }
 
+  /**
+   * Método para cerrar la ventana actual
+   * @param sendData Mensaje que se envia al componente padre
+   */
   closeModal(sendData) {
     this.activeModal.close(sendData);
   }
 
+  /**
+   * Método par validar si los datos ingresados son validos y que se puedan guardar
+   */
   pagar() {
     if (this.compradorForm.valid) {
       let venta = new Venta();
@@ -80,10 +86,12 @@ export class DatosCompradorComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para guardar los datos de la venta y comprobar la realización de la transacción
+   * @param venta Objeto con los datos de la venta
+   */
   guardar(venta: Venta) {
-    this.ventaService.guardarVenta(venta).subscribe((x) => {
-      console.log(x);
-    });
+    this.ventaService.guardarVenta(venta).subscribe((x) => {});
     let timerInterval;
     Swal.fire({
       title: 'Procesando la compra',

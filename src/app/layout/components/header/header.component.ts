@@ -18,6 +18,9 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  /**
+   * Metodo para cerrar la sesión actual
+   */
   logout() {
     sessionStorage.removeItem('usuario_id');
     this.router.navigate(['/login']).then(() => {

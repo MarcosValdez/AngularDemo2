@@ -8,6 +8,10 @@ import { AppServiceBase } from 'src/app/core/appService';
   providedIn: 'root',
 })
 export class CategoriaService extends AppServiceBase {
+  /**
+   * Servcio para obtener las categorias de los libros
+   * @returns Lista de objetos con las categorias
+   */
   listarCategorias(): Observable<any> {
     return this.get('categoria/list').pipe(catchError(this.handleError));
   }

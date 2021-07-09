@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Categoria } from '../../model/categoria';
-import { Libro } from '../../model/libro';
+import { Categoria } from '../../models/categoria';
+import { Libro } from '../../models/libro';
 import { CategoriaService } from '../../service/categoria.service';
 import { LibroService } from '../../service/libro.service';
 import { ModalVenderComponent } from '../modal-vender/modal-vender.component';
@@ -79,6 +79,10 @@ export class CatalogoComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para abrir el modal para visualizar la informacion detalla de un libro
+   * @param id Identificador del libro
+   */
   openModal(id: number) {
     const modalRef = this.modalService.open(ModalVenderComponent, {
       scrollable: true,

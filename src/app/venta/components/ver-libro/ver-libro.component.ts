@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Categoria } from '../../model/categoria';
-import { Libro } from '../../model/libro';
+import { Categoria } from '../../models/categoria';
+import { Libro } from '../../models/libro';
 import { CategoriaService } from '../../service/categoria.service';
 import { LibroService } from '../../service/libro.service';
 
@@ -59,15 +59,28 @@ export class VerLibroComponent implements OnInit {
     this.listarCategorias();
     this.cargarFormulario(this.fromParent.id);
   }
+
+  /**
+   * Metodo para cerrar la ventan actual
+   * @param sendData Mensaje que se envia al componente padre
+   */
   closeModal(sendData) {
     this.activeModal.close(sendData);
   }
+
+  /**
+   * Metodo para listar las categorias de un libro
+   */
   listarCategorias() {
     this.categoriaService.listarCategorias().subscribe((x) => {
       this.categorias = x;
-      console.log(x);
     });
   }
+
+  /**
+   * Metodo para mostrar los datos de un libro
+   * @param id Identificador del libro
+   */
   cargarFormulario(id: number) {
     this.libroService.obtenerLibro(id).subscribe((x: Libro) => {
       this.libro = x;

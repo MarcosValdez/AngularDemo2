@@ -9,10 +9,19 @@ import { Venta } from '../models/venta';
   providedIn: 'root',
 })
 export class VentaService extends AppServiceBase {
+  /**
+   * Servicio para guardar la venta realizada
+   * @param venta Objeto con los datos de la venta
+   * @returns Objeto con la venta realizada o mensaje de confirmacion
+   */
   guardarVenta(venta: Venta) {
     return this.post('venta/save', venta).pipe(catchError(this.handleError));
   }
 
+  /**
+   * Servicio para listar las ventas
+   * @returns Objeto con las ventas realizadas
+   */
   listaVentas() {
     return this.get('venta/list').pipe(catchError(this.handleError));
   }

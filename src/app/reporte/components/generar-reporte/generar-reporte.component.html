@@ -121,19 +121,18 @@
       <tbody>
         <tr
           *ngFor="
-            let v of ventas
+            let v of libros
               | paginate: { itemsPerPage: 10, currentPage: pageActual };
             let i = index
           "
         >
           <td>{{ i + 1 }}</td>
-          <td>{{ v?.comprador?.nombre + " " + v?.comprador?.apellido }}</td>
-          <td scope="row">{{ v?.libro?.nombre }}</td>
-          <td>{{ v?.libro?.autor?.nombre }}</td>
-          <td>{{ v?.libro?.categoria?.nombre }}</td>
-          <td>{{ v?.libro?.editorial?.nombre }}</td>
-          <td>{{ v?.fecha[2]}}/{{v?.fecha[1]}}/{{v?.fecha[0]}}
-          </td>
+          <td>{{ v?.comprador }}</td>
+          <td scope="row">{{ v?.nombrelibro }}</td>
+          <td>{{ v?.autor }}</td>
+          <td>{{ v?.categoria }}</td>
+          <td>{{ v?.editorial }}</td>
+          <td>{{ v?.fecha | date: "dd/MM/yyyy" }}</td>
         </tr>
       </tbody>
     </table>

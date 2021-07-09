@@ -9,6 +9,11 @@ import { Usuario } from '../models/usuario';
   providedIn: 'root',
 })
 export class AuthService extends AppServiceBase {
+  /**
+   * Servicio para validar el login y obtener sus datos
+   * @param user Objeto con las credenciales ingresadas por el usuario
+   * @returns objeto con los datos del usuario
+   */
   login(user: Usuario) {
     return this.post('usuario/login', user).pipe(catchError(this.handleError));
   }

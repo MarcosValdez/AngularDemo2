@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Autor } from '../../model/autor';
-import { Categoria } from '../../model/categoria';
-import { Editorial } from '../../model/editorial';
-import { Libro } from '../../model/libro';
+import { Autor } from '../../models/autor';
+import { Categoria } from '../../models/categoria';
+import { Editorial } from '../../models/editorial';
+import { Libro } from '../../models/libro';
 import { CategoriaService } from '../../service/categoria.service';
 import { LibroService } from '../../service/libro.service';
 
@@ -122,10 +122,17 @@ export class ModalNuevoLibroComponent implements OnInit {
       this.libroFormGuardar.get('imagen').touched
     );
   }
+  /**
+   * Método para cerrar la ventana actual
+   * @param sendData Mensaje que se envia al componente padre
+   */
   closeModal(sendData) {
     this.activeModal.close(sendData);
   }
 
+  /**
+   * Método para comprobar que los datos ingresados son válidos y se puedan guardar
+   */
   validar() {
     if (this.libroFormGuardar.valid) {
       const libro = new Libro();
@@ -157,20 +164,29 @@ export class ModalNuevoLibroComponent implements OnInit {
     }
   }
 
+  /**
+   * Metodo para guardar el libro
+   * @param libro Objeto con los datos del libro
+   */
   guardar(libro: Libro) {
     this.libroService.save(libro).subscribe((x) => {
-      /* document.getElementById('cerrar').click(); */
-      console.log(x);
-
       this.closeModal({ guardado: true });
     });
   }
+
+  /**
+   * Metodo para listar las categorias de los libros
+   */
   listarCategorias() {
     this.categoriaService.listarCategorias().subscribe((x) => {
       this.categorias = x;
-      console.log(x);
     });
   }
+
+  /**
+   * Metodo para obtener la informacion de un libro
+   * @param id Identificador del libro
+   */
   cargarFormulario(id: number) {
     this.libroService.obtenerLibro(id).subscribe((x: Libro) => {
       this.libroFormGuardar.get('nombreGuardar').setValue(x?.nombre);

@@ -16,6 +16,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Método para el login con el username y password
+   */
   login() {
     const user = new Usuario();
     user.nombre = this.username;
@@ -28,7 +31,6 @@ export class LoginComponent implements OnInit {
           position: 'top-end',
           showConfirmButton: false,
           timer: 1500,
-          //timerProgressBar: true,
           didOpen: (toast) => {
             toast.addEventListener('mouseenter', Swal.stopTimer);
             toast.addEventListener('mouseleave', Swal.resumeTimer);

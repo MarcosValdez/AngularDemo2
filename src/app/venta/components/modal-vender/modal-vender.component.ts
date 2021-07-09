@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import Swal from 'sweetalert2';
-import { Libro } from '../../model/libro';
+import { Libro } from '../../models/libro';
 import { LibroService } from '../../service/libro.service';
 import { DatosCompradorComponent } from '../datos-comprador/datos-comprador.component';
 
@@ -22,16 +22,28 @@ export class ModalVenderComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerLibro();
   }
+
+  /**
+   * Método para cerrar la ventana actual
+   * @param sendData Mensaje de confirmación que se envia al componente padre
+   */
   closeModal(sendData) {
     this.activeModal.close(sendData);
   }
 
+  /**
+   * Método para obtener los datos de un libro
+   */
   obtenerLibro() {
     this.libroService.obtenerLibro(this.fromParent.id).subscribe((x: Libro) => {
       this.libro = x;
     });
   }
-  openModal(id: number) {
+
+  /**
+   * Método para abrir el modal de venta del libro
+   */
+  openModal() {
     const modalRef = this.modalService.open(DatosCompradorComponent, {
       scrollable: true,
       windowClass: 'myCustomModalClass',
@@ -43,7 +55,6 @@ export class ModalVenderComponent implements OnInit {
     modalRef.componentInstance.fromParent = data;
     modalRef.result.then(
       (result) => {
-        console.log(result);
         if (result?.compra) {
           this.closeModal('cerrar');
           Swal.fire({

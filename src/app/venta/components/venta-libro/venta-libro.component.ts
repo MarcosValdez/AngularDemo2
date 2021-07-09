@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Parametros } from 'src/app/reporte/models/parametros';
 import Swal from 'sweetalert2';
-import { Autor } from '../../model/autor';
-import { Categoria } from '../../model/categoria';
-import { Editorial } from '../../model/editorial';
-import { Libro } from '../../model/libro';
+import { Categoria } from '../../models/categoria';
+import { Libro } from '../../models/libro';
 import { CategoriaService } from '../../service/categoria.service';
 import { LibroService } from '../../service/libro.service';
-import { VentaService } from '../../service/venta.service';
 import { ModalNuevoLibroComponent } from '../modal-nuevo-libro/modal-nuevo-libro.component';
 import { VerLibroComponent } from '../ver-libro/ver-libro.component';
 
@@ -47,31 +43,27 @@ export class VentaLibroComponent implements OnInit {
     });
   }
 
+  /**
+   * Metodo para listar los libros
+   */
   listarLibros() {
     this.libroService.listarLibros().subscribe((x) => {
       this.libros = x;
     });
   }
 
+  /**
+   * Metodo para listar las categorias de los libros
+   */
   listarCategorias() {
     this.categoriaService.listarCategorias().subscribe((x) => {
       this.categorias = x;
     });
   }
-  /*  buscar() {
-    const parametro = new Parametros();
-    parametro.autor = this.libroForm.get('autor')?.value;
-    parametro.categoria = this.libroForm.get('categoria')?.value?.categoriaId;
-    parametro.nombre = this.libroForm.get('titulo')?.value;
-    this.libroService.listarFiltro(parametro).subscribe((x) => {
-      this.libros = x;
-    });
-  } */
 
-  vender(id: number) {
-    this.libroService.vender(id).subscribe((x) => this.listarLibros());
-  }
-
+  /**
+   * Metodo para abrir el modal para crear un libro nuevo
+   */
   openModal() {
     const modalRef = this.modalService.open(ModalNuevoLibroComponent, {
       scrollable: true,
@@ -101,6 +93,10 @@ export class VentaLibroComponent implements OnInit {
     );
   }
 
+  /**
+   * Metodo para eliminar un libro
+   * @param id Identificador del libro
+   */
   eliminar(id: number) {
     Swal.fire({
       title: 'Estas seguro?',
@@ -113,13 +109,16 @@ export class VentaLibroComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.libroService.eliminar(id).subscribe((x) => {
-          console.log(x);
           Swal.fire('Eliminado!', 'El Libro ha sido eliminado', 'success');
         });
       }
     });
   }
 
+  /**
+   * Metodo para abrir el modal para editar un libro
+   * @param id Identificador del libro
+   */
   openModalEditar(id: number) {
     const modalRef = this.modalService.open(ModalNuevoLibroComponent, {
       scrollable: true,
@@ -147,6 +146,10 @@ export class VentaLibroComponent implements OnInit {
     );
   }
 
+  /**
+   * Metodo para abrir el modal para ver la informacion de un libro
+   * @param id Identificador del libro
+   */
   openModalLibro(id: number) {
     const modalRef = this.modalService.open(VerLibroComponent, {
       scrollable: true,
@@ -162,10 +165,17 @@ export class VentaLibroComponent implements OnInit {
       (reason) => {}
     );
   }
+
+  /**
+   * Metodo para cambiar a la primera pagina
+   */
   cambioNombre() {
     this.pageActual = 1;
   }
 
+  /**
+   * Metodo para descargar un excel con el inventario
+   */
   descargar() {
     this.libroService.descargar().subscribe((result) => {
       const url = window.URL.createObjectURL(result);
@@ -178,6 +188,10 @@ export class VentaLibroComponent implements OnInit {
       return url;
     });
   }
+
+  /**
+   * Metodo para eliminar la busqueda anterior
+   */
   borrarBusqueda() {
     this.filterlibro = '';
   }

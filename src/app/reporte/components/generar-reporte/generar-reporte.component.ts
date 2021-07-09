@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Categoria } from 'src/app/venta/model/categoria';
-import { Libro } from 'src/app/venta/model/libro';
+import { Categoria } from 'src/app/venta/models/categoria';
 import { Venta } from 'src/app/venta/models/venta';
 import { CategoriaService } from 'src/app/venta/service/categoria.service';
 import { LibroService } from 'src/app/venta/service/libro.service';
-import { VentaService } from 'src/app/venta/service/venta.service';
 import { Parametros } from '../../models/parametros';
 import { Reporte } from '../../models/reporte';
 
@@ -27,8 +25,7 @@ export class GenerarReporteComponent implements OnInit {
   constructor(
     private libroService: LibroService,
     private formBuilder: FormBuilder,
-    private categoriaService: CategoriaService,
-    private ventaService: VentaService
+    private categoriaService: CategoriaService
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +40,9 @@ export class GenerarReporteComponent implements OnInit {
     this.listarCategorias();
   }
 
+  /**
+   * Método para la busqueda de las ventas realizadas segun los filtros ingresados
+   */
   buscar() {
     const parametro = new Parametros();
     parametro.autor = this.formLibro.get('autor')?.value;
@@ -52,15 +52,12 @@ export class GenerarReporteComponent implements OnInit {
     parametro.fechaInicio = this.formLibro.get('fechaInicio')?.value;
     this.libroService.listarFiltro(parametro).subscribe((x) => {
       this.libros = x;
-      console.log(x);
     });
-
-    /* this.ventaService.listaVentas().subscribe((x: Venta[]) => {
-      console.log(x);
-      this.ventas = x;
-    }); */
   }
 
+  /**
+   * Método para generar el reporte de ventas
+   */
   onFnExportar() {
     const parametro = new Parametros();
     parametro.autor = this.formLibro.get('autor')?.value;
@@ -80,6 +77,9 @@ export class GenerarReporteComponent implements OnInit {
     });
   }
 
+  /**
+   * Método para eliminar los filtros anteriores
+   */
   reestablecer() {
     this.formLibro.get('autor')?.setValue('');
     this.formLibro.get('categoria')?.setValue('');
@@ -91,6 +91,9 @@ export class GenerarReporteComponent implements OnInit {
     });
   }
 
+  /**
+   * Método para la busqueda de las categorias que puede tener un libro
+   */
   listarCategorias() {
     this.categoriaService.listarCategorias().subscribe((x) => {
       this.categorias = x;
