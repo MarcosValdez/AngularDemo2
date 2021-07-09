@@ -66,7 +66,7 @@
           [class.is-invalid]="categoriaNoValido"
         >
           <option value="" hidden>Seleccione</option>
-          <option *ngFor="let d of categorias" [ngValue]="d">
+          <option *ngFor="let d of categorias" [ngValue]="d.categoriaId">
             {{ d.nombre }}
           </option>
         </select>
