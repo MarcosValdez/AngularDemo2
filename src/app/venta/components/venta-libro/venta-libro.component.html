@@ -13,7 +13,10 @@
             />
           </div>
           <div class="col-1 m-0">
-            <button class="btn btn-outline-danger m-0" (click)="borrarBusqueda()">
+            <button
+              class="btn btn-outline-danger m-0"
+              (click)="borrarBusqueda()"
+            >
               X
             </button>
           </div>
@@ -55,12 +58,14 @@
         </thead>
 
         <tbody>
-          <tr *ngFor="
+          <tr
+            *ngFor="
               let l of libros
                 | filter: { nombre: filterlibro }
                 | paginate: { itemsPerPage: numRows, currentPage: pageActual };
               let i = index
-            ">
+            "
+          >
             <td>{{ i + 1 }}</td>
             <td>{{ l?.nombre }}</td>
             <td>{{ l?.autor?.nombre }}</td>
@@ -68,17 +73,28 @@
             <td class="text-center">$ {{ l?.precio }}</td>
             <td class="text-center">{{ l?.cantidad }}</td>
             <td>
-              <button class="btn btn-primary" type="button" (click)="openModalLibro(l?.libroId)">
+              <button
+                class="btn btn-primary"
+                type="button"
+                (click)="openModalLibro(l?.libroId)"
+              >
                 <i class="fas fa-info-circle"></i>
               </button>
             </td>
             <td>
               <button class="btn btn-success" type="button">
-                <i class="fas fa-edit" (click)="openModalEditar(l?.libroId)"></i>
+                <i
+                  class="fas fa-edit"
+                  (click)="openModalEditar(l?.libroId)"
+                ></i>
               </button>
             </td>
             <td>
-              <button class="btn btn-danger" type="button" (click)="eliminar(l?.libroId)">
+              <button
+                class="btn btn-danger"
+                type="button"
+                (click)="eliminar(l?.libroId)"
+              >
                 <i class="far fa-trash-alt"></i>
               </button>
             </td>
@@ -86,10 +102,16 @@
         </tbody>
       </table>
     </div>
-    <div class="d-flex flex-row-reverse">
+    <div class="d-flex flex-row-reverse my-4" *ngIf="libros?.length > 0">
       <ng-container>
-        <pagination-controls class="my-pagination" maxSize="5" [responsive]="responsive" [previousLabel]="previousLabel"
-          [nextLabel]="nextLabel" (pageChange)="pageActual = $event"></pagination-controls>
+        <pagination-controls
+          class="my-pagination"
+          maxSize="5"
+          [responsive]="responsive"
+          [previousLabel]="previousLabel"
+          [nextLabel]="nextLabel"
+          (pageChange)="pageActual = $event"
+        ></pagination-controls>
       </ng-container>
     </div>
   </div>

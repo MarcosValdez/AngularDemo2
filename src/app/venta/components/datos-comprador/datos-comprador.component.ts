@@ -25,7 +25,10 @@ export class DatosCompradorComponent implements OnInit {
     this.compradorForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
-      dni: ['', Validators.required],
+      dni: [
+        '',
+        [Validators.required, Validators.minLength(8), Validators.maxLength(8)],
+      ],
       cuenta: ['', Validators.required],
     });
   }
