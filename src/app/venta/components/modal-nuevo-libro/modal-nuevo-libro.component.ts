@@ -142,7 +142,7 @@ export class ModalNuevoLibroComponent implements OnInit {
       libro.autor = autor;
       let categoria = new Categoria();
       categoria.categoriaId =
-        this.libroFormGuardar.get('categoriaGuardar').value?.categoriaId;
+        this.libroFormGuardar.get('categoriaGuardar').value;
       libro.categoria = categoria;
       libro.precio = this.libroFormGuardar.get('precio').value;
       libro.cantidad = this.libroFormGuardar.get('cantidad').value;
